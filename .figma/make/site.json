@@ -1,0 +1,11 @@
+{
+  "title": "Glossário Digital - Nave a Vela",
+  "description": "Explore a comprehensive 200-page online glossary of technology terms, designed for students and professionals seeking to enhance their tech knowledge.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
