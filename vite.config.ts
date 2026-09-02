@@ -7,8 +7,9 @@ import siteConfiguration from './.figma/make/site.json'
 
 function resolvePublicBase(): string {
   const fromEnv = process.env.FIGMA_PUBLIC_URL || process.env.BASE_PATH
-  if (!fromEnv || fromEnv === '/') return '/'
-  return fromEnv.endsWith('/') ? fromEnv : `${fromEnv}/`
+  if (!fromEnv) return "./"
+  if (fromEnv === "/") return "/"
+  return fromEnv.endsWith("/") ? fromEnv : `${fromEnv}/`
 }
 
 // Vite config — https://vitejs.dev/config/
