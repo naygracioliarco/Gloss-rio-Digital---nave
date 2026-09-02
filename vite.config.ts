@@ -5,13 +5,19 @@ import path from 'node:path'
 
 import siteConfiguration from './.figma/make/site.json'
 
+function resolvePublicBase(): string {
+  const fromEnv = process.env.FIGMA_PUBLIC_URL || process.env.BASE_PATH
+  if (!fromEnv || fromEnv === '/') return '/'
+  return fromEnv.endsWith('/') ? fromEnv : `${fromEnv}/`
+}
+
 // Vite config — https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   // .figma/make/deploy-preview passes `--mode development` for cached-preview builds.
   const emitSourcemaps = mode === 'development'
 
   return {
-    base: process.env.FIGMA_PUBLIC_URL ? `${process.env.FIGMA_PUBLIC_URL}/` : '/',
+    base: resolvePublicBase(),
     build: {
       sourcemap: emitSourcemaps ? 'inline' : false,
       minify: !emitSourcemaps,
